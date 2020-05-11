@@ -2,7 +2,7 @@ from urllib.request import Request, urlopen
 from bs4 import BeautifulSoup
 from flask import Markup
 
-
+#uses beautiful soup to web scrape the what to do when bored at home
 def printh2():
 
 	my_site = 'https://www.readersdigest.ca/health/healthy-living/self-quarantine-activities/'
