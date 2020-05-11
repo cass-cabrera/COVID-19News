@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import requests, json
 from flask_bootstrap import Bootstrap 
 from api import getStat, getKeys, getWorld
+from whattodo import printh2
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
@@ -17,7 +18,7 @@ def home():
 #the route for the what to do page
 @app.route('/whattodo')
 def whattodo():
-	return render_template('whattodo.html')
+	return render_template('whattodo.html', titles=printh2())
 
 #the route for the mythbusters page
 @app.route('/mythbusters')
