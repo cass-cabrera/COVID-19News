@@ -1,9 +1,163 @@
-{% extends 'bootstrap/base.html' %}
-{% block title %}
- COVID 19
+<!doctype html>
+<html>
+
+{% extends 'base.html' %}
+	{% block content %}
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+	<style>
+		.navButton {
+			padding: 10px;
+			border-radius: 25px;
+			box-shadow: 0 9px 16px 0 rgba(0,0,0,0.24), 0 10px 50px 0 rgba(0,0,0,0.19);
+			transition: transform .2s;
+			font-weight: bold;
+			background: #96C5F7
+		}
+
+		.navButton:hover {
+		    transform: scale(1.25); 
+		}
+
+		.card {
+			box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+			transition: 0.3s;
+			background: #96C5F7;
+			border-radius: 5px;
+			padding-bottom: 15px
+
+		}
+
+		.container {
+			padding: 2px 16px;
+			font-family: Trebuchet MS;
+			font-size: 25px;
+			text-align: center;
+			
+		}
+
+		.box {
+			display: flex; 
+			flex-direction:row; 
+			flex-wrap: wrap;
+			padding:5px;
+		}
+	</style>
+
+	<hr>
+
+	<body>
+		<div>
+			<span style="float: left; padding-left: 25px">
+				<form action="{{ url_for('search') }}" method="GET">
+					<label style="font-family: Trebuchet MS; font-weight: bold;" for="country-select">Select A Country:</label>
+					<select style="font-family: Trebuchet MS;" name="region" id="country-select">
+						{% for r in options %}
+							<option>{{ r }}</option>
+						{% endfor %}
+					</select>
+					&nbsp;&nbsp;
+					<input class="navButton" id="searchbutton" type="submit">
+				</form>
+				<div>
+					{% if data %}
+					<div style="padding-left: 150px">
+						<label class="container" style="padding-top: 100px; padding-bottom: 30px">{{country}}</label>
+						<div class="box" >
+							<div style="margin:10px;">
+								<span class="card" >
+									<div class="container" style="font-weight: bold">
+										<label>Total Cases: </label>
+									</div>
+									<div class="container">
+										<label>{{data["total_cases"]}}</label>
+									</div>
+								</span>
+								<br>
+								<span class="card">
+									<div class="container" style="font-weight: bold">
+										<label>Deaths: </label>
+									</div>
+									<div class="container">
+										<label>{{data["deaths"]}}</label>
+									</div>
+								</span>
+							</div>
+								<br>
+							<div style="margin:10px;">
+								<span class="card">
+									<div class="container" style="font-weight: bold">
+										<label>Tested: </label>
+									</div>
+									<div class="container">
+										<label>{{data["tested"]}}</label>
+									</div>
+								</span>
+								<br>
+								<span class="card">
+									<div class="container" style="font-weight: bold">
+										<label>Active Cases: </label>
+									</div>
+									<div class="container">
+										<label>{{data["active_cases"]}}</label>
+									</div>
+								</span>
+							</div>
+						</div>
+					</div>
+					{% else %}
+					<div style="padding-left: 150px">
+						<label class="container" style="padding-top: 100px; padding-bottom: 30px">Worldwide Data</label>
+						<div class="box" >
+							<div style="margin:10px;">
+								<span class="card" >
+									<div class="container" style="font-weight: bold; ">
+										<label>Total Cases: </label>
+									</div>
+									<div class="container">
+										<label>{{world["summary"]["total_cases"]}}</label>
+									</div>
+								</span>
+								<br>
+								<span class="card">
+									<div class="container" style="font-weight: bold">
+										<label>Deaths: </label>
+									</div>
+									<div class="container">
+										<label>{{world["summary"]["deaths"]}}</label>
+									</div>
+								</span>
+							</div>
+							<br>
+							<div style="margin:10px;">
+								<span class="card">
+									<div class="container" style="font-weight: bold">
+										<label>Recovered: </label>
+									</div>
+									<div class="container">
+										<label>{{world["summary"]["recovered"]}}</label>
+									</div>
+								</span>
+							</div>
+						</div>
+					</div>
+					{% endif %}
+						
+				</div>
+			</span>
+			<span style="float: right;padding-right: 30px; text-align: center;">
+				<div>
+					<button class="navButton" onclick="window.location.href='../../mythbusters'">Mythbusters</button>
+				</div>
+				<br><br>
+				<div>
+					<button class="navButton" onclick="window.location.href='../../whattodo'">What To Do During Quarantine</button>
+				</div>
+			</span>
+		</div>
+	</body>
+
 {% endblock %}
-{% block content %}
- <div class="container">
- <h1>COVID 19</h1>
- </div>
-{% endblock %}
+</html>
