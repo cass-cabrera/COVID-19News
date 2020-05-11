@@ -2,7 +2,9 @@ from flask import Flask, render_template, request
 import requests, json
 from flask_bootstrap import Bootstrap 
 from api import getStat, getKeys, getWorld
+from pprint import pprint
 from whattodo import printh2
+
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
