@@ -24,6 +24,15 @@ install requests
 ```
 pip install requests
 ```
+install bs4
+```
+pip install bs4
+```
+intstall lxml
+```
+pip install lxml
+```
+
 
 
 #### Authors
