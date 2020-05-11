@@ -24,15 +24,10 @@
 		.card {
 			box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 			transition: 0.3s;
-			width: 40%;
-			width: 200px;
 			background: #96C5F7;
-			border-radius: 5px
+			border-radius: 5px;
+			padding-bottom: 15px
 
-		}
-
-		.card:hover {
-			box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 		}
 
 		.container {
@@ -40,14 +35,15 @@
 			font-family: Trebuchet MS;
 			font-size: 25px;
 			text-align: center;
+			
 		}
 
 		.box {
 			display: flex; 
 			flex-direction:row; 
 			flex-wrap: wrap;
-			justify-content: space-around;
-
+			padding:5px;
+		}
 	</style>
 
 	<hr>
@@ -66,89 +62,89 @@
 					<input class="navButton" id="searchbutton" type="submit">
 				</form>
 				<div>
-					<span>
-						<div>
-							{% if data %}
-							<div>
-								<label class="container" style="padding-top: 100px; padding-bottom: 30px">{{country}}</label>
-								<div class="box" >
-									<span>
-										<div class="card" >
-											<div class="container" style="font-weight: bold">
-												<label>Total Cases: </label>
-											</div>
-											<div class="container">
-												<label>{{data["total_cases"]}}</label>
-											</div>
-										</div>
-										<div class="card">
-											<div class="container" style="font-weight: bold">
-												<label>Deaths: </label>
-											</div>
-											<div class="container">
-												<label>{{data["deaths"]}}</label>
-											</div>
-										</div>
-									</span>
-									<br>
-									<div>
-										<span class="card">
-											<div class="container" style="font-weight: bold">
-												<label>Tested: </label>
-											</div>
-											<div class="container">
-												<label>{{data["tested"]}}</label>
-											</div>
-										</span>
-										<span class="card">
-											<div class="container" style="font-weight: bold">
-												<label>Active Cases: </label>
-											</div>
-											<div class="container">
-												<label>{{data["active_cases"]}}</label>
-											</div>
-										</span>
+					{% if data %}
+					<div style="padding-left: 150px">
+						<label class="container" style="padding-top: 100px; padding-bottom: 30px">{{country}}</label>
+						<div class="box" >
+							<div style="margin:10px;">
+								<span class="card" >
+									<div class="container" style="font-weight: bold">
+										<label>Total Cases: </label>
 									</div>
-								</div>
+									<div class="container">
+										<label>{{data["total_cases"]}}</label>
+									</div>
+								</span>
+								<br>
+								<span class="card">
+									<div class="container" style="font-weight: bold">
+										<label>Deaths: </label>
+									</div>
+									<div class="container">
+										<label>{{data["deaths"]}}</label>
+									</div>
+								</span>
 							</div>
-							{% else %}
-							<div>
-								<label class="container" style="padding-top: 100px; padding-bottom: 30px">Worldwide Data</label>
-								<div class="box" >
-									<div>
-										<span class="card" >
-											<div class="container" style="font-weight: bold">
-												<label>Total Cases: </label>
-											</div>
-											<div class="container">
-												<label>{{world["summary"]["total_cases"]}}</label>
-											</div>
-										</span>
-										<span class="card">
-											<div class="container" style="font-weight: bold">
-												<label>Deaths: </label>
-											</div>
-											<div class="container">
-												<label>{{world["summary"]["deaths"]}}</label>
-											</div>
-										</span>
+								<br>
+							<div style="margin:10px;">
+								<span class="card">
+									<div class="container" style="font-weight: bold">
+										<label>Tested: </label>
 									</div>
-									<br>
-									<div>
-										<span class="card">
-											<div class="container" style="font-weight: bold">
-												<label>Recovered: </label>
-											</div>
-											<div class="container">
-												<label>{{world["summary"]["recovered"]}}</label>
-											</div>
-										</span>
+									<div class="container">
+										<label>{{data["tested"]}}</label>
 									</div>
-								</div>
+								</span>
+								<br>
+								<span class="card">
+									<div class="container" style="font-weight: bold">
+										<label>Active Cases: </label>
+									</div>
+									<div class="container">
+										<label>{{data["active_cases"]}}</label>
+									</div>
+								</span>
 							</div>
-							{% endif %}
 						</div>
-					</span>
+					</div>
+					{% else %}
+					<div style="padding-left: 150px">
+						<label class="container" style="padding-top: 100px; padding-bottom: 30px">Worldwide Data</label>
+						<div class="box" >
+							<div style="margin:10px;">
+								<span class="card" >
+									<div class="container" style="font-weight: bold; ">
+										<label>Total Cases: </label>
+									</div>
+									<div class="container">
+										<label>{{world["summary"]["total_cases"]}}</label>
+									</div>
+								</span>
+								<br>
+								<span class="card">
+									<div class="container" style="font-weight: bold">
+										<label>Deaths: </label>
+									</div>
+									<div class="container">
+										<label>{{world["summary"]["deaths"]}}</label>
+									</div>
+								</span>
+							</div>
+							<br>
+							<div style="margin:10px;">
+								<span class="card">
+									<div class="container" style="font-weight: bold">
+										<label>Recovered: </label>
+									</div>
+									<div class="container">
+										<label>{{world["summary"]["recovered"]}}</label>
+									</div>
+								</span>
+							</div>
+						</div>
+					</div>
+					{% endif %}
+						
 				</div>
 			</span>
 			<span style="float: right;padding-right: 30px; text-align: center;">
